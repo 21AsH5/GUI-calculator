@@ -47,7 +47,9 @@ def calculate():
         expression = ""
 
 def delete():
-    entry1.delete(-1)
+     global expression
+     expression=expression[:-1]
+     equation.set(expression)
     
 
 
