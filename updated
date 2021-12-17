@@ -1,0 +1,130 @@
+
+from tkinter import *
+#from tkinter.ttk import *
+
+
+ash=Tk()
+ash.title("GUI Calculator")
+ash.configure(bg='light yellow')
+label=Label(ash,text="Click with care.. All copyrights reserved...",bg='pink').pack()
+
+label1=Label(ash,text="-------------Arvinth JR-------------",bg='pink').pack(side='bottom')
+#size
+ash.geometry('700x600')
+#buttons
+btnc= Button(ash, text = 'Close',bd='5',bg='#98AFC7',padx=30,command = ash.destroy)
+btnc.place(x=330,y=450) 
+
+
+
+
+equation=StringVar()
+expression=""
+expression_field = Entry(ash, textvariable=equation)
+
+def all_clear():
+     global expression
+     expression=""
+     equation.set("")
+
+def btn_click(num):
+    global expression
+    expression = expression + str(num)
+    equation.set(expression)
+ 
+def calculate():
+  
+    try:
+ 
+        global expression
+        total = str(eval(expression))
+        equation.set(total)
+        expression = ""
+
+    except:
+ 
+        equation.set(" error ")
+        expression = ""
+
+def delete():
+    entry1.delete(-1)
+    
+
+
+entry1= Entry(ash,font=('questrial', 12),width=100,justify='right',textvariable=equation)
+entry1.pack(padx=100,pady= 20)
+
+    
+#buttons 
+btn1= Button(ash, text='1',bd='3',padx=20,pady=15,command=lambda:btn_click(1))
+btn1.place(x=150,y=150)
+
+btn4= Button(ash, text='4',bd='3',padx=20,pady=15,command=lambda:btn_click(4))
+btn4.place(x=150,y=220)
+
+
+btn7= Button(ash, text='7',bd='3',padx=20,pady=15,command=lambda:btn_click(7))
+btn7.place(x=150,y=290)
+
+btn2= Button(ash, text='2',bd='3',padx=20,pady=15,command=lambda:btn_click(2))
+btn2.place(x=250,y=150)
+
+btn5= Button(ash, text='5',bd='3',padx=20,pady=15,command=lambda:btn_click(5))
+btn5.place(x=250,y=220)
+
+btn8= Button(ash, text='8',bd='3',padx=20,pady=15,command=lambda:btn_click(8))
+btn8.place(x=250,y=290)
+
+btn3= Button(ash, text='3',bd='3',padx=20,pady=15,command=lambda:btn_click(3))
+btn3.place(x=350,y=150)
+
+btn6= Button(ash, text='6',bd='3',padx=20,pady=15,command=lambda:btn_click(6))
+btn6.place(x=350,y=220)
+
+btn9= Button(ash, text='9',bd='3',padx=20,pady=15,command=lambda:btn_click(9))
+btn9.place(x=350,y=290)
+
+btn0= Button(ash, text='0',bd='3',padx=20,pady=15,command=lambda:btn_click(0))
+btn0.place(x=250,y=360)
+
+#symbols
+
+btnadd= Button(ash, text='+',bd='3',padx=18,pady=50,command=lambda:btn_click('+'))
+btnadd.place(x=450,y=150)
+
+
+btnsub= Button(ash, text='-',bd='3',padx=20,pady=15,command=lambda:btn_click('-'))
+btnsub.place(x=450,y=290)
+
+
+btnmul= Button(ash, text='*',bd='3',padx=20,pady=15,command=lambda:btn_click('*'))
+btnmul.place(x=450,y=360)
+
+
+btndiv= Button(ash, text='/',bd='3',padx=20,pady=15,command=lambda:btn_click('/'))
+btndiv.place(x=350,y=360)
+
+
+btndec= Button(ash, text='.',bd='3',padx=20,pady=15,command=lambda:btn_click('.'))
+btndec.place(x=150,y=360)
+
+btnmod= Button(ash, text='00',bd='3',padx=20,pady=15,command=lambda:btn_click('00'))
+btnmod.place(x=550,y=290)
+
+
+btnclear= Button(ash, text='DEL',bd='3',padx=20,pady=50,command=lambda:delete())
+btnclear.place(x=550,y=150)
+
+btnac= Button(ash, text='AC',bd='5',bg='red',padx=20,pady=15,command=lambda:all_clear())
+btnac.place(x=550,y=360)
+
+
+btnnxt= Button(ash,text='Calculate',bd='8',padx=10,pady=5,bg='#98AFC7',command=lambda:calculate())
+btnnxt.place(x=335,y=80)
+
+    
+ash.mainloop()
+
+
+
+   
